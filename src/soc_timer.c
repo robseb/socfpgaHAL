@@ -7,8 +7,9 @@
 
 #include "socfpgaHAL.h"
 #include "soc_timer.h"
+
+#include "soc_resetManager.h"
 #include "soc_regacc.h"
-#include "soc_resetManger.h"
 
 soc_status_t soc_timer_init(void)
 {
@@ -145,17 +146,17 @@ soc_status_t soc_timer_ISRenable (soc_timer_module_t module, bool enable_disable
 	SOC_ASSERT(SOCR_TIMER_BASE((int) module));
 	SOC_ASSERT(module);
 
+#define ALT_TMR_TMR1CTLREG_TMR1_INT_MSK_CLR_MSK    0xfffffffb
+
 	volatile uint32_t base_addr = SOCR_TIMER_BASE((int) module) +SOCRO_TIMER1CONTROLREG;
 
-	// Enable instat free running mode the perodic mode
-	if (mode==SOC_TIMER_PERIODIC)
-		regmask |= SOCRO_TIMER1CONTROLREG_PERODIC;
 	if (enable_disable)
 		alt_write_word(regaddr, alt_read_word(regaddr) & SOCRO_TIMER1CONTROLREG_ISRMASK);
 	else
 		alt_write_word(regaddr, alt_read_word(regaddr) | SOCRO_TIMER1CONTROLREG_ISRMASK);
 
 	return SOC_S_SUCCESSFULLY;
+
 }
 
 soc_status_t soc_timer_ISRclearPending (soc_timer_module_t module)

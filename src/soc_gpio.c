@@ -4,10 +4,10 @@
  *  Created on: 27.08.2020
  *      Author: robin
  */
+#include <soc_resetManager.h>
 #include "socfpgaHAL.h"
 #include "soc_gpio.h"
 #include "soc_regacc.h"
-#include "soc_resetManger.h"
 
 
 

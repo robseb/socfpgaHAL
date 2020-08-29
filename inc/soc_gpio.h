@@ -18,8 +18,8 @@ extern "C"
 #include <stdbool.h>
 
 #include "soc_regacc.h"
-#include "soc_resetManger.h"
-#include "soc_uartreg.h"
+#include "soc_resetManager.h"
+
 
 /*
  *

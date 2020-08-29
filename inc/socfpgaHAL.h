@@ -16,14 +16,23 @@
 
 #define SOC_S_SUCCESSFULLY      1
 
-#define SOC_S_FAIELD_TO_ACCESS -1
+#define SOC_S_GENERAL_ERROR    -1
 #define SOC_S_WRONG_INPUT      -2
+#define SOC_S_FAIELD_TO_ACCESS -3
+#define SOC_S_BAD_CLOCK		   -4
+
+
 
 #define SOC_ASSERT(in) if((int)in==0) asm( "break" )
 
 typedef enum{
-	SUCCESSFULLY = 1,
-	FAIELD_TO_ACCESS =-1
+	SUCCESSFULLY 		= 1,
+
+	GENERAL_ERROR 		=-1,
+	WRONG_INPUT			=-2,
+	FAIELD_TO_ACCESS 	=-3,
+	BAD_CLOCK		    =-4
+
 } soc_status_t;
 
 
