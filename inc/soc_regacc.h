@@ -228,7 +228,5 @@ extern "C"
 
 /*! @} */
 
-#ifdef __cplusplus
-}
-
 #endif /* SOCFPGAHAL_INC_SOC_REGACC_H_ */
+

@@ -9,33 +9,45 @@
 #define SOCFPGAHAL_INC_SOCFPGAHAL_H_
 
 
-#define FPGA2HPS_BASE_OFFSET 0
+
+#include "system.h"
+#include "socfpgaHAL_config.h"
 
 
 #define SOC_S_SUCCESSFULLY      1
+
 #define SOC_S_FAIELD_TO_ACCESS -1
+#define SOC_S_WRONG_INPUT      -2
+
+#define SOC_ASSERT(in) if((int)in==0) asm( "break" )
+
 typedef enum{
 	SUCCESSFULLY = 1,
 	FAIELD_TO_ACCESS =-1
-} soc_staus_t;
+} soc_status_t;
 
-// Operating Modes --> for using a NIOS II Processor to
-//                     access the HPS hard IP via the
-//                     FPGA2HPS bridge
-//#define SOCFPGAHAL_MODE_NIOS
 
+/*
+ *
+ *  Include the Files depending on the hardware configuration
+ */
 #ifdef SOCFPGAHAL_MODE_NIOS
-	#define SOCFPGAHAL_ENABLE_GPIO
+
+#define SOCFPGAHAL_ENABLE_SPTIMER0 	    (1)
+#define SOCFPGAHAL_ENABLE_SPTIMER1  	(1)
+#define SOCFPGAHAL_ENABLE_OSCTIMER0 	(1)
+#define SOCFPGAHAL_ENABLE_OSCTIMER1 	(1)
 
 
-#else
-#error "The socfpga HAL operation mode is not speczified"
-#endif
-
-
-#ifdef SOCFPGAHAL_MODE_NIOS
-	#ifdef SOCFPGAHAL_ENABLE_GPIO
-		#include "socfpgaHAL/inc/soc_gpio.h"
+	#if SOCFPGAHAL_ENABLE_GPIO == 1
+		#include "soc_gpio.h"
+	#endif
+	#if SOCFPGAHAL_ENABLE_SPTIMER0==1 || SOCFPGAHAL_ENABLE_SPTIMER1==1 || \
+		SOCFPGAHAL_ENABLE_SPTIMER1==1 || SOCFPGAHAL_ENABLE_OSCTIMER1==1
+		#include "soc_timer.h"
+	#endif
+	#if SOCFPGAHAL_ENABLE_UART1==1
+		#include "soc_uart.h"
 	#endif
 #endif
 
