@@ -52,17 +52,13 @@ soc_status_t soc_gpio_deinit(void)
 
 soc_status_t soc_gpio_configPort(soc_gpio_config_t* pinConf)
 {
-
 	// Input check
 	SOC_ASSERT(pinConf->port);
 	SOC_ASSERT(pinConf->pin_dir);
-	SOC_ASSERT(pinConf->pin_deb);
-	SOC_ASSERT(pinConf->pin_sync);
-	SOC_ASSERT(SOCR_GPIO_BASE((int) pinConf->port));
-
 
 	// Read the port
 	volatile uint32_t base_addr = SOCR_GPIO_BASE((int) pinConf->port);
+	SOC_ASSERT(base_addr);
 
 	// Check that all selected GPIO pins are available on the port
 	SOC__GPIO_PORT_CHECK(pinConf->port,pinConf->pin_mask);
@@ -103,10 +99,10 @@ soc_status_t soc_gpio_ISRconfig(soc_gpio_config_t* pinConf)
 	SOC_ASSERT(pinConf->pin_type);
 	SOC_ASSERT(pinConf->pin_pol);
 	SOC_ASSERT(pinConf->isr_mask);
-	SOC_ASSERT(SOCR_GPIO_BASE((int) pinConf->port));
 
 	// Read the port
 	volatile uint32_t base_addr = SOCR_GPIO_BASE((int) pinConf->port);
+	SOC_ASSERT(base_addr);
 
 
 	// Check that all selected GPIO pins are available on the port
@@ -145,13 +141,13 @@ soc_status_t soc_gpio_ISRconfig(soc_gpio_config_t* pinConf)
 soc_status_t soc_gpio_ISRenable(soc_gpio_port_t port, uint32_t pin_mask, \
 		bool enable_disable)
 {
-	SOC_ASSERT(SOCR_GPIO_BASE((int) port));
 
 	// Check that all selected GPIO pins are available on the port
 	SOC__GPIO_PORT_CHECK(port,pin_mask);
 
 	// Read the port
 	volatile uint32_t base_addr = SOCR_GPIO_BASE((int) port);
+	SOC_ASSERT(base_addr);
 
 	if(enable_disable)
 	{
@@ -170,10 +166,9 @@ soc_status_t soc_gpio_ISRenable(soc_gpio_port_t port, uint32_t pin_mask, \
 
 soc_status_t soc_gpio_write(soc_gpio_port_t port, uint32_t pin_output_val)
 {
-	SOC_ASSERT(SOCR_GPIO_BASE((int) port));
-
 	// Read the port
 	volatile uint32_t base_addr = SOCR_GPIO_BASE((int) port);
+	SOC_ASSERT(base_addr);
 
 	// Check that all selected GPIO pins are available on the port
 	SOC__GPIO_PORT_CHECK(port,pin_output_val);
@@ -183,18 +178,46 @@ soc_status_t soc_gpio_write(soc_gpio_port_t port, uint32_t pin_output_val)
 	return SOC_S_SUCCESSFULLY;
 }
 
-soc_status_t soc_gpio_read (soc_gpio_port_t port, uint32_t pin_mask,uint32_t* value)
+soc_status_t soc_gpio_set(soc_gpio_port_t port, uint32_t pin_mask)
 {
-	SOC_ASSERT(SOCR_GPIO_BASE((int) port));
-
 	// Read the port
 	volatile uint32_t base_addr = SOCR_GPIO_BASE((int) port);
+	SOC_ASSERT(base_addr);
 
 	// Check that all selected GPIO pins are available on the port
 	SOC__GPIO_PORT_CHECK(port,pin_mask);
 
-	value = soc_read_word(base_addr+SOCRO_SWPORTA_DR);
+	soc_write_word(base_addr+SOCRO_SWPORTA_DR,pin_mask);
 
 	return SOC_S_SUCCESSFULLY;
+}
+
+soc_status_t soc_gpio_clear(soc_gpio_port_t port, uint32_t pin_mask)
+{
+	// Read the port
+	volatile uint32_t base_addr = SOCR_GPIO_BASE((int) port);
+	SOC_ASSERT(base_addr);
+
+	// Check that all selected GPIO pins are available on the port
+	SOC__GPIO_PORT_CHECK(port,pin_mask);
+
+	soc_write_word(base_addr+SOCRO_SWPORTA_DR,~pin_mask);
+
+	return SOC_S_SUCCESSFULLY;
+}
+
+uint8_t soc_gpio_read (soc_gpio_port_t port, uint32_t pin)
+{
+	// Read the port
+	volatile uint32_t base_addr = SOCR_GPIO_BASE((int) port);
+	SOC_ASSERT(base_addr);
+
+	// Check that all selected GPIO pins are available on the port
+	SOC__GPIO_PORT_CHECK(port,(1<<pin));
+
+	uint32_t value = soc_read_word(base_addr+SOCRO_EXT_PORTA);
+
+	return value & (1<<pin) ? 1:0;
+
 
 }

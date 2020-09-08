@@ -33,7 +33,7 @@ extern "C"
 
 	#define SOCR_GPIO_BASE(no) (no==1) ? SOCR_GPIO0_BASE : \
 							   (no==2) ? SOCR_GPIO1_BASE : \
-							   (no==3) ? SOCR_GPIO1_BASE: \
+							   (no==3) ? SOCR_GPIO2_BASE: \
 							    0
 
 	/*
@@ -175,7 +175,10 @@ soc_status_t soc_gpio_ISRenable(soc_gpio_port_t port, uint32_t pin_mask, \
 		bool enable_disable);
 
 soc_status_t soc_gpio_write(soc_gpio_port_t port, uint32_t pin_output_val);
-soc_status_t soc_gpio_read (soc_gpio_port_t port, uint32_t pin_mask,uint32_t* value);
+soc_status_t soc_gpio_set(soc_gpio_port_t port, uint32_t pin_mask);
+soc_status_t soc_gpio_clear(soc_gpio_port_t port, uint32_t pin_mask);
+
+uint8_t soc_gpio_read (soc_gpio_port_t port, uint32_t pin);
 #ifdef __cplusplus
 }
 #endif  /* __cplusplus */
