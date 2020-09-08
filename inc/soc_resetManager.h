@@ -1834,7 +1834,7 @@ typedef volatile struct SOC_RSTMGR_MPUMODRST_s  SOC_RSTMGR_MPUMODRST_t;
 /* The width in bits of the SOC_RSTMGR_PERMODRST_OSC1TMR1 register field. */
 #define SOC_RSTMGR_PERMODRST_OSC1TMR1_WIDTH      1
 /* The mask used to set the SOC_RSTMGR_PERMODRST_OSC1TMR1 register field value. */
-//#define SOC_RSTMGR_PERMODRST_OSC1TMR1_SET_MSK    0x00000200
+#define SOC_RSTMGR_PERMODRST_OSC1TMR1_SET_MSK    0x00000200
 /* The mask used to clear the SOC_RSTMGR_PERMODRST_OSC1TMR1 register field value. */
 #define SOC_RSTMGR_PERMODRST_OSC1TMR1_CLR_MSK    0xfffffdff
 /* The reset value of the SOC_RSTMGR_PERMODRST_OSC1TMR1 register field. */

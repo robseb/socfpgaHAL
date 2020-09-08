@@ -26,7 +26,7 @@
 
 #define SOC_UART_CPR_OFST        (0xF4)
 #define SOC_UART_CPR_ADDR(base)  SOC_UART_CAST(void *, (SOC_UART_CAST(char *, (base)) + 0xf4))
-#define SOC_UART_CPR_FIFO_MODE_GET(value) (((value) >> 16) & 0xff)
+#define SOC_UART_CPR_FIFO_MODE_GET(value) ((((uint32_t) value) >> 16) & 0xff)
 #define SOC_UART_CPR_AFCE_MODE_SET_MSK (1 << 4)
 
 /*  Remove these macros as part of case:123835.*/

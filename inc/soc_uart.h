@@ -67,12 +67,12 @@ extern "C"
 #define SOC_UART_LCR_ADDR(base)  SOC_CAST(void *, (SOC_UART_CAST(char *, (base)) + 0xc))
 #define SOC_UART_RBR_THR_DLL_VALUE_SET(value) (((value) << 0) & 0x000000ff)
 #define SOC_UART_RBR_THR_DLL_ADDR(base)  SOC_UART_CAST(void *, (SOC_UART_CAST(char *, (base)) + 0x0))
-#define SOC_UART_IER_DLH_ADDR(base)  SOC_UART_CAST(void *, (SOC_UART_CAST(char *, (base)) + 0x4s))
+#define SOC_UART_IER_DLH_ADDR(base)  SOC_UART_CAST(void *, (SOC_UART_CAST(char *, (base)) + 0x4))
 #define SOC_UART_SRR_ADDR(base)  SOC_UART_CAST(void *, (SOC_UART_CAST(char *, (base)) + 0x88))
 #define SOC_UART_FCR_ADDR(base)  SOC_UART_CAST(void *, (SOC_UART_CAST(char *, (base)) + 0x8))
 
 #define SOC_UART_RFL_ADDR(base)  SOC_UART_CAST(void *, (SOC_UART_CAST(char *, (base)) + 0x84))
-#define SOC_UART_MCR_ADDR(base)  ALT_CAST(void *, (ALT_CAST(char *, (base)) + 0x10))
+#define SOC_UART_MCR_ADDR(base)  SOC_UART_CAST(void *, (SOC_UART_CAST(char *, (base)) + 0x10))
 
 /*
  *
