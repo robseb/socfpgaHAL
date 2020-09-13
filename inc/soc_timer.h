@@ -2,7 +2,7 @@
  * soc_timer.h
  *
  *  Created on: 28.08.2020
- *      Author: robin
+ *      Author: Robin Sebastian (git@robseb.de)
  */
 
 #ifndef SOCFPGAHAL_INC_SOC_TIMER_H_

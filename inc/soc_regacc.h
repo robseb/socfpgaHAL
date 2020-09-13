@@ -2,7 +2,7 @@
  * soc_regacc.h
  *
  *  Created on: 27.08.2020
- *      Author: robin
+ *      Author: Robin Sebastian (git@robseb.de)
  */
 
 #ifndef SOCFPGAHAL_INC_SOC_REGACC_H_

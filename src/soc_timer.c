@@ -2,7 +2,7 @@
  * soc_timer.c
  *
  *  Created on: 28.08.2020
- *      Author: robin
+ *      Author: Robin Sebastian (git@robseb.de)
  */
 
 #include "socfpgaHAL.h"

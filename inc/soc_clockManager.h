@@ -2,7 +2,7 @@
  * soc_clockManager.h
  *
  *  Created on: 29.08.2020
- *      Author: robin
+ *      Author: Robin Sebastian (git@robseb.de)
  */
 
 #ifndef SOCFPGAHAL_INC_SOC_CLOCKMANAGER_H_

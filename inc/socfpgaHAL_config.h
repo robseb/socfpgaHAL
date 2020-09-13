@@ -2,7 +2,7 @@
  * socfpgaHAL_config.h
  *
  *  Created on: 28.08.2020
- *      Author: robin
+ *      Author: Robin Sebastian (git@robseb.de)
  */
 
 #ifndef SOCFPGAHAL_INC_SOCFPGAHAL_CONFIG_H_
@@ -30,14 +30,14 @@
 	#define SOCFPGAHAL_ENABLE_GPIO 			(1)
 
 // Timer
-	#define SOCFPGAHAL_ENABLE_SPTIMER0 	    (1)
-	#define SOCFPGAHAL_ENABLE_SPTIMER1  	(1)
-	#define SOCFPGAHAL_ENABLE_OSCTIMER0 	(1)
-	#define SOCFPGAHAL_ENABLE_OSCTIMER1 	(1)
+	#define SOCFPGAHAL_ENABLE_SPTIMER0 	    (0)
+	#define SOCFPGAHAL_ENABLE_SPTIMER1  	(0)
+	#define SOCFPGAHAL_ENABLE_OSCTIMER0 	(0)
+	#define SOCFPGAHAL_ENABLE_OSCTIMER1 	(0)
 // BUS
-	#define SOCFPGAHAL_ENABLE_UART0      	(1)
-	#define SOCFPGAHAL_ENABLE_UART1      	(1)
-	#define SOCFPGAHAL_ENABLE_UART_SOFTIP   (1)
+	#define SOCFPGAHAL_ENABLE_UART0      	(0)
+	#define SOCFPGAHAL_ENABLE_UART1      	(0)
+	#define SOCFPGAHAL_ENABLE_UART_SOFTIP   (0)
 
 
 #else

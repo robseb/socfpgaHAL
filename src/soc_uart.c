@@ -1,4 +1,9 @@
-
+/*
+ * soc_uart.c
+ *
+ *  Created on: 28.08.2020
+ *      Author: Robin Sebastian (git@robseb.de)
+ */
 
 #include "socfpgaHAL.h"
 #include "soc_uart.h"

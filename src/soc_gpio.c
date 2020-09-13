@@ -2,7 +2,7 @@
  * soc_gpio.c
  *
  *  Created on: 27.08.2020
- *      Author: robin
+ *      Author: Robin Sebastian (git@robseb.de)
  */
 #include <soc_resetManager.h>
 #include "socfpgaHAL.h"

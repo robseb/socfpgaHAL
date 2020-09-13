@@ -2,7 +2,7 @@
  * socfpgaHAL.h
  *
  *  Created on: 26.08.2020
- *      Author: robin
+ *      Author: Robin Sebastian (git@robseb.de)
  */
 
 #ifndef SOCFPGAHAL_INC_SOCFPGAHAL_H_
