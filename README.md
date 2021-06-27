@@ -1,7 +1,8 @@
 # socfpgaHAL
  HAL Lib for accesssing Hard IP of Intel (ALTERA) SoC-FPGAs with a NIOS II Sof-Core processor
+___
 
-
+# Autor
 
 * *rsyocto*; **Robin Sebastian,M.Sc. [(LinkedIn)](https://www.linkedin.com/in/robin-sebastian-a5080220a)**
 
